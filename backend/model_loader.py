@@ -18,7 +18,8 @@ import torch.nn.functional as F
 import numpy as np
 from pathlib import Path
 
-from model.resnet_spec import ResNetSpec
+from resnet_spec import ResNetSpec
+
 
 # Distress class mapping (you can adjust later)
 # 0 normal, 1 cough, 2 wheeze, 3 crackles, 4 agonal
