@@ -13,8 +13,9 @@ Pipeline:
 """
 
 import time
-from backend.preprocess import preprocess_audio_bytes
-from backend.model_loader import ModelWrapper
+from preprocess import preprocess_audio_bytes
+from model_loader import ModelWrapper
+
 
 # Load model once globally (best practice)
 MODEL = ModelWrapper()
