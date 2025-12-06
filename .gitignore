@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pkl
+*.pt
+*.tflite
+*.onnx
+.env
+.ipynb_checkpoints/
+
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+model/checkpoints/*
+!model/checkpoints/.gitkeep
