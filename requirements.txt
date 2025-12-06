@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+torch
+torchaudio
+librosa
+soundfile
+numpy
+streamlit
+requests
+pytest
+tqdm
