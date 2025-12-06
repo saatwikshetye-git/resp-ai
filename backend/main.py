@@ -13,7 +13,8 @@ import uvicorn
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.infer import predict_audio_bytes
+from infer import predict_audio_bytes
+
 
 # ---------------------------------------------------
 # FastAPI initialization
