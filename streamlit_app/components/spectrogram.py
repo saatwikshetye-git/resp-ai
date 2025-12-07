@@ -7,6 +7,7 @@ Matches training settings exactly.
 
 import numpy as np
 import librosa
+import librosa.display   # REQUIRED for specshow()
 import matplotlib.pyplot as plt
 import streamlit as st
 
@@ -19,10 +20,10 @@ HOP_LENGTH = 256
 def plot_mel(waveform: np.ndarray, sr: int = SAMPLE_RATE, title: str = "Mel Spectrogram"):
     """
     Convert waveform → mel spectrogram → log scale
-    and plot using matplotlib inside Streamlit.
+    and display it inside Streamlit using matplotlib.
     """
-
     try:
+        # Compute mel spectrogram
         mel = librosa.feature.melspectrogram(
             y=waveform,
             sr=sr,
@@ -31,8 +32,11 @@ def plot_mel(waveform: np.ndarray, sr: int = SAMPLE_RATE, title: str = "Mel Spec
             n_mels=N_MELS,
             power=2.0,
         )
+
+        # Convert to log-mel
         logmel = librosa.power_to_db(mel, ref=np.max)
 
+        # Plot
         fig, ax = plt.subplots(figsize=(8, 3))
         img = librosa.display.specshow(
             logmel,
@@ -42,10 +46,13 @@ def plot_mel(waveform: np.ndarray, sr: int = SAMPLE_RATE, title: str = "Mel Spec
             y_axis="mel",
             ax=ax,
         )
+
         ax.set_title(title)
         fig.colorbar(img, ax=ax, format="%+2.0f dB")
+
+        # Display in Streamlit
         st.pyplot(fig)
+        plt.close(fig)  # prevent memory leaks on Streamlit Cloud
 
     except Exception as e:
         st.error(f"Failed to generate spectrogram: {e}")
-
