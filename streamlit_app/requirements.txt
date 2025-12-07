@@ -4,3 +4,9 @@ numpy
 matplotlib
 librosa
 soundfile
+scipy
+pillow
+audioread
+numba
+llvmlite
+pydub
